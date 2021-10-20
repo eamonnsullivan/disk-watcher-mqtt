@@ -50,6 +50,8 @@ def publisher():
     while True:
         for disk in DISKS:
             total, used, free = shutil.disk_usage(disk)
+            if (disk == '/'):
+                disk = '/root'
             path = "/disk" + disk
             logger.debug("Path: {}, disk: {}, total: {}, used: {}, free: {}".format(
                 path, disk, total, used, free

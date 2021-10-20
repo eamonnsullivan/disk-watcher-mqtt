@@ -4,11 +4,11 @@ Documentation=https://github.com/eamonnsullivan/disk-watcher-mqtt
 After=network-online.target
 
 [Service]
-User=eamonn
+User=pi
 Type=notify
 Environment=PYTHONUNBUFFERED=true
-ExecStart=/usr/bin/python3 /home/eamonn/git/disk-watcher-mqtt/disk-watcher.py
-WorkingDirectory=/home/eamonn/git/disk-watcher-mqtt
+ExecStart=/usr/bin/python3 /home/pi/disk-watcher-mqtt/disk-watcher.py
+WorkingDirectory=/home/pi/disk-watcher-mqtt
 Restart=always
 RestartSec=15
 WatchdogSec=500

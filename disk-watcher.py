@@ -50,10 +50,10 @@ def publisher():
     while True:
         for disk in DISKS:
             total, used, free = shutil.disk_usage(disk)
-            logger.debug("Disk: {}, total: {}, used: {}, free: {}".format(
-                disk, total, used, free
-            ))
             path = "/disk" + disk
+            logger.debug("Path: {}, disk: {}, total: {}, used: {}, free: {}".format(
+                path, disk, total, used, free
+            ))
             MqttClient.connect(HOST, PORT, KEEPALIVE)
             MqttClient.publish(BASE_TOPIC + path + "/total_gb", (total // (2**30)))
             MqttClient.publish(BASE_TOPIC + path + "/used_gb", (used // (2**30)))

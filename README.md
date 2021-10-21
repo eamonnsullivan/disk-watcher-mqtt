@@ -1,6 +1,6 @@
 # disk-watcher-mqtt
 
-A very simple example of a service that periodically reports disk usage stats to an MQTT broker. I wrote this because I needed to keep an eye on the amount of free space on several Raspberry Pis around the house (they are using 32GB SD cards). I haven't written in Python in years, but I choose the language because it's available on all the Pis, even the Zero. So this is unlikely to be a good example of how to do this. I just needed it to work, not be elegant.
+A very simple example of a service that periodically reports disk usage stats to an MQTT broker. I wrote this because I needed to keep an eye on the amount of free space on several Raspberry Pis around the house. I haven't written in Python in years, but I choose the language because it's available on all the Pis, even the Zero. So this is unlikely to be a good example of how to do this. I just needed it to work, not be elegant.
 
 ## Installation
 ```

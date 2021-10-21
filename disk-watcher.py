@@ -66,7 +66,7 @@ def publisher():
             MqttClient.publish(BASE_TOPIC + path + "/free_gb",
                                (free // (2**30)))
             MqttClient.publish(BASE_TOPIC + path + "/used_pct",
-                               round((used/total * 100), 2)
+                               round((used/total * 100), 2))
             MqttClient.disconnect()
         systemd.notify("WATCHDOG=1")
         time.sleep(FREQUENCY)

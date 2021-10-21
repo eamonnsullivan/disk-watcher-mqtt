@@ -21,6 +21,8 @@ See `disk-watcher.conf`, set your broker, port, etc. You'll also want to set the
 
 ## Set as a service
 
+Make sure the directories and user specified in `disk-watcher.service` match your set up and then:
+
 ```
 sudo ln -s /home/pi/disk-watcher/disk-watcher.service /etc/systemd/system/
 sudo systemctl --system daemon-reload

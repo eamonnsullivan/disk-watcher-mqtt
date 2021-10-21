@@ -53,14 +53,20 @@ def publisher():
             if (disk == '/'):
                 disk = '/root'
             path = "/disk" + disk
-            logger.debug("Path: {}, disk: {}, total: {}, used: {}, free: {}".format(
-                path, disk, total, used, free
-            ))
+            logger.debug(
+                "Path: {}, disk: {}, total: {}, used: {}, free: {}".format(
+                    path, disk, total, used, free
+                )
+            )
             MqttClient.connect(HOST, PORT, KEEPALIVE)
-            MqttClient.publish(BASE_TOPIC + path + "/total_gb", (total // (2**30)))
-            MqttClient.publish(BASE_TOPIC + path + "/used_gb", (used // (2**30)))
-            MqttClient.publish(BASE_TOPIC + path + "/free_gb", (free // (2**30)))
-            MqttClient.publish(BASE_TOPIC + path + "/used_pct", (used/total * 100))
+            MqttClient.publish(BASE_TOPIC + path + "/total_gb",
+                               (total // (2**30)))
+            MqttClient.publish(BASE_TOPIC + path + "/used_gb",
+                               (used // (2**30)))
+            MqttClient.publish(BASE_TOPIC + path + "/free_gb",
+                               (free // (2**30)))
+            MqttClient.publish(BASE_TOPIC + path + "/used_pct",
+                               round((used/total * 100), 2)
             MqttClient.disconnect()
         systemd.notify("WATCHDOG=1")
         time.sleep(FREQUENCY)

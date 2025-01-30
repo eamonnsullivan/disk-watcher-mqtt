@@ -23,6 +23,8 @@ systemd = sdnotify.SystemdNotifier()
 MQTT_BROKER = config['mqtt.broker']
 HOST = MQTT_BROKER['host']
 PORT = int(MQTT_BROKER['port'])
+USER = MQTT_BROKER['username']
+PASSWORD = MQTT_BROKER['password']
 KEEPALIVE = int(MQTT_BROKER['keepalive'])
 
 PUBLISHING = config['publishing']
@@ -40,8 +42,9 @@ def on_connect(client, userdata, flags, rc):
     logging.info("Connected with result code " + str(rc))
 
 
-MqttClient = mqtt.Client()
+MqttClient = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
 MqttClient.on_connect = on_connect
+MqttClient.username_pw_set(USER, PASSWORD)
 
 
 def publisher():
